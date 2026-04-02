@@ -536,7 +536,9 @@ function importCSV(text){
     if(!cat)return;
     if(!data[cat.id])data[cat.id]=[];
     const entries=data[cat.id];
-    if(entries.length===0||entries[entries.length-1]._csvImportDone) entries.push({});
+    const isFirstField=['サービス名','書類・カード名','端末名','システム名'].includes(fieldName);
+if(entries.length===0||isFirstField) entries.push({});
+
     entries[entries.length-1][fieldName]=value;
   });
   const finalData={};
